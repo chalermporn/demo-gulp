@@ -1,30 +1,18 @@
-const gulp        = require('gulp');
-const browserSync = require('browser-sync').create();
-const reload      = browserSync.reload;
-
-const { src, dest, watch, task } = require("gulp");
+const { src, dest, watch } = require("gulp");
 const sass = require("gulp-sass");
 const concat = require("gulp-concat");
 const pug = require("gulp-pug");
-// Save a reference to the `reload` method
+const browserSync = require("browser-sync").create();
+const reload = browserSync.reload;
 
-// Watch scss AND html files, doing different things with each.
-gulp.task('serve', function () {
-
-    // Serve files from the root of this project
-    browserSync.init({
-        server: {
-            baseDir: "./dist"
-        }
-    });
-
-    gulp.watch("dist/**/*.html").on("change", reload);
-    gulp.watch("./src/css/*.scss", css).on("change", reload);
-    gulp.watch("./src/pug/**/*.pug", html).on("change", reload);
-    gulp.watch("./src/js/*.js", js).on("change", reload);
-});
-
-
+function serve() {
+  return browserSync.init({
+    server: {
+      baseDir: "./dist",
+    },
+  });
+}
+exports.serve = serve;
 
 function css() {
   return src("./src/css/*.scss")
@@ -52,7 +40,8 @@ function html() {
 exports.html = html;
 
 exports.watch = function () {
-  watch("./src/css/*.scss", css);
-  watch("./src/pug/**/*.pug", html);
-  watch("./src/js/*.js", js);
+  serve();
+  watch("./src/css/*.scss", css).on("change", reload);
+  watch("./src/pug/**/*.pug", html).on("change", reload);
+  watch("./src/js/*.js", js).on("change", reload);
 };
