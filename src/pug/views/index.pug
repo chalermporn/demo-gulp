@@ -1,11 +1,68 @@
-extends ../layout.pug
+extends ../layouts/default.pug
 block head
   title Hello World
 block content  
   a(href="index.html") index 
   a(href="home.html") Home 
   h1 Welcome
-  p This is the index.pug file compiled.
-  p(class="text-red-500") bird bird gggg sss
-  p(class="text-white text-center font-bold text-9xl") สวัสดีครับ
-  p(class="text-red-500 text-center font-bold text-9xl") สวัสดีครับ
+  .container.mx-auto
+    .py-12
+      h2.text-2xl.font-bold Unstyled
+      p.mt-2.text-lg.text-gray-600 This is how form elements look out of the box.
+      .mt-8.max-w-md
+        .grid.grid-cols-1.gap-6
+          label.block
+            span.text-gray-700 Full name
+            input.mt-1.block.w-full(type='text' placeholder='')
+          label.block
+            span.text-gray-700 Email address
+            input.mt-1.block.w-full(type='email' placeholder='john@example.com')
+          label.block
+            span.text-gray-700 When is your event?
+            input.mt-1.block.w-full(type='date')
+          label.block
+            span.text-gray-700 What type of event is it?
+            select.block.w-full.mt-1
+              option Corporate event
+              option Wedding
+              option Birthday
+              option Other
+          label.block
+            span.text-gray-700 Additional details
+            textarea.mt-1.block.w-full(rows='3')
+          .block
+            .mt-2
+              div
+                label.inline-flex.items-center
+                  input(type='checkbox' checked='')
+                  span.ml-2 Email me news and special offers
+    .py-12
+      h2.text-2xl.font-bold Simple
+      .mt-8.max-w-md
+        .grid.grid-cols-1.gap-6
+          label.block
+            span.text-gray-700 Full name
+            input.mt-1.block.w-full.rounded-md.border-gray-300.shadow-sm(type='text' class='focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='')
+          label.block
+            span.text-gray-700 Email address
+            input.mt-1.block.w-full.rounded-md.border-gray-300.shadow-sm(type='email' class='focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' placeholder='john@example.com')
+          label.block
+            span.text-gray-700 When is your event?
+            input.mt-1.block.w-full.rounded-md.border-gray-300.shadow-sm(type='date' class='focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50')
+          label.block
+            span.text-gray-700 What type of event is it?
+            select.block.w-full.mt-1.rounded-md.border-gray-300.shadow-sm(class='focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 invalid:text-[#0000005b]')
+              option(value="" disabled selected) -- Please Select --
+              option Wedding
+              option Birthday
+              option Other
+          label.block
+            span.text-gray-700 Additional details
+            textarea.mt-1.block.w-full.rounded-md.border-gray-300.shadow-sm(class='focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' rows='3')
+          .block
+            .mt-2
+              div
+                label.inline-flex.items-center
+                  input.rounded.border-gray-300.text-indigo-600.shadow-sm(type='checkbox' class='focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50' checked='')
+                  span.ml-2 Email me news and special offers
+
